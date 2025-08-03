@@ -1,5 +1,8 @@
 # QA Automation Playground
 
+[![Cypress Tests](https://github.com/novikova-y/qa-automation-lab/actions/workflows/cypress.yml/badge.svg)](https://github.com/novikova-y/qa-automation-lab/actions/workflows/cypress.yml)
+
+
 This is an advanced QA automation project designed to demonstrate modern testing practices using **Cypress** (initially) and **Playwright** (later). It includes full-stack test coverage across multiple levels, from UI/E2E to API and component testing. The goal is to evaluate and compare tools, patterns, and infrastructure setups in real-world conditions.
 
 ## Stack & Scope
