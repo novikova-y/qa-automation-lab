@@ -15,51 +15,33 @@ describe('Login Page with various users from fixtures', () => {
   });
 
   it('should log in with standard_user', () => {
-    cy.fixture('users').then(users => {
-      const { username, password } = users.standard;
-      loginPage.login(username, password);
-      cy.url().should('include', '/inventory.html');
-    });
+    cy.login('standard');
+    cy.url().should('include', '/inventory.html');
   });
 
   it('should show error for locked_out_user', () => {
-    cy.fixture('users').then(users => {
-      const { username, password } = users.locked;
-      loginPage.login(username, password);
-      cy.get('[data-test="error"]').should('contain.text', 'locked out');
-    });
+    cy.login('locked');
+    cy.get('[data-test="error"]').should('contain.text', 'locked out');
   });
 
   it('should log in with problem_user', () => {
-    cy.fixture('users').then(users => {
-      const { username, password } = users.problem;
-      loginPage.login(username, password);
-      cy.url().should('include', '/inventory.html');
-    });
+    cy.login('problem');
+    cy.url().should('include', '/inventory.html');
   });
 
   it('should log in with performance_glitch_user', () => {
-    cy.fixture('users').then(users => {
-      const { username, password } = users.glitch;
-      loginPage.login(username, password);
-      cy.url().should('include', '/inventory.html');
-    });
+    cy.login('glitch');
+    cy.url().should('include', '/inventory.html');
   });
 
   it('should log in with error_user', () => {
-    cy.fixture('users').then(users => {
-      const { username, password } = users.error;
-      loginPage.login(username, password);
-      cy.url().should('include', '/inventory.html');
-    });
+    cy.login('error');
+    cy.url().should('include', '/inventory.html');
   });
 
   it('should log in with visual_user', () => {
-    cy.fixture('users').then(users => {
-      const { username, password } = users.visual;
-      loginPage.login(username, password);
-      cy.url().should('include', '/inventory.html');
-    });
+    cy.login('visual');
+    cy.url().should('include', '/inventory.html');
   });
 
   it('should show error for empty credentials', () => {

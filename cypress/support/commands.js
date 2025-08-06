@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', (userType) => {
+    cy.fixture('users').then((users) => {
+        const user = users[userType];
+
+        if (!user) {
+            throw new Error(`${userType} not found in fixtures`);
+        }
+
+        cy.visit('https://www.saucedemo.com/');
+        cy.get('[data-test="username"]').type(user.username);
+        cy.get('[data-test="password"]').type(user.password);
+        cy.get('[data-test="login-button"]').click();
+    });
+});
