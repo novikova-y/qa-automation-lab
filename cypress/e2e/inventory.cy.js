@@ -3,10 +3,8 @@ import { inventoryPage } from '../support/pages/inventoryPage';
 
 describe('Inventory Page Tests', () => {
   beforeEach(() => {
-    cy.fixture('users').then(({ standard }) => {
-      loginPage.visit();
-      loginPage.login(standard.username, standard.password);
-    });
+    loginPage.visit();
+    cy.login('standard');
   });
 
   it('should display list of inventory items', () => {
