@@ -30,6 +30,11 @@ class InventoryPage {
       );
     });
   }
+  getItemNames() {
+  return cy.get('.inventory_item_name').then($els => {
+    return Cypress._.map($els, el => el.innerText);
+  });
+}
 }
 
 export const inventoryPage = new InventoryPage();

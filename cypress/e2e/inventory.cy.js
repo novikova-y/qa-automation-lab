@@ -46,4 +46,20 @@ describe('Inventory Page Tests', () => {
     });
   });
 
+  it('should sort items from A to Z', () => {
+    inventoryPage.sortBy('Name (A to Z)');
+    inventoryPage.getItemNames().then((names) => {
+      const sorted = [...names].sort((a, b) => a.localeCompare(b));
+      expect(names).to.deep.equal(sorted);
+    });
+  });
+
+  it('should sort items from Z to A', () => {
+    inventoryPage.sortBy('Name (Z to A)');
+    inventoryPage.getItemNames().then((names) => {
+      const sorted = [...names].sort((a, b) => b.localeCompare(a));
+      expect(names).to.deep.equal(sorted);
+    });
+  });
+
 });
