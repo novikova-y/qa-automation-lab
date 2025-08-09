@@ -1,4 +1,4 @@
-# QA Automation Playground
+# QA Automation Lab
 
 ![Cypress Tests](https://github.com/novikova-y/qa-automation-lab/actions/workflows/cypress.yml/badge.svg)
 
@@ -12,7 +12,7 @@ It includes full-stack test coverage across multiple levels, from UI/E2E to comp
 - **Playwright** (planned, for comparison)
 - **JavaScript/TypeScript**
 - **GitHub Actions** for CI/CD
-- **Allure / ReportPortal** (planned)
+- **Allure** (test reporting)
 - **Prometheus / Grafana / Elastic** (observability setup planned)
 
 ### Testing Focus
