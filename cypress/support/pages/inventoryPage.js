@@ -35,6 +35,13 @@ class InventoryPage {
     return Cypress._.map($els, el => el.innerText);
   });
 }
+  burgerMenu() {
+    return cy.get('#react-burger-menu-btn');
+  }
+
+  logoutButton() {
+    return cy.get('#logout_sidebar_link');
+  }
 }
 
 export const inventoryPage = new InventoryPage();

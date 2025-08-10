@@ -62,4 +62,12 @@ describe('Inventory Page Tests', () => {
     });
   });
 
+  it('should show error when accessing inventory after logout', () => {
+    inventoryPage.burgerMenu().should('be.visible').click();
+    inventoryPage.logoutButton().should('be.visible').click();
+    cy.visit('/inventory.html', { failOnStatusCode: false });
+    cy.get('[data-test="error"]').should('contain.text', "Epic sadface: You can only access '/inventory.html' when you are logged in.")
+      .should('be.visible');
+  });
+
 });
