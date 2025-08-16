@@ -44,7 +44,7 @@ describe('Login Page Tests', () => {
   describe('Negative Scenarios', () => {
     it('should show error for locked_out_user', () => {
       cy.login('locked');
-      cy.get('[data-test="error"]').should('contain.text', 'locked out');
+      cy.get('[data-test="error"]').should('contain.text', 'Epic sadface: Sorry, this user has been locked out.');
     });
 
     it('should show error for empty credentials', () => {

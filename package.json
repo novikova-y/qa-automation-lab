@@ -13,8 +13,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.2.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
     "@shelex/cypress-allure-plugin": "^2.41.2",
     "allure-commandline": "^2.34.1",
-    "cypress": "^14.5.3"
+    "cypress": "^14.5.3",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "rimraf": "^6.0.1"
   }
 }
