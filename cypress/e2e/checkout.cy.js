@@ -126,4 +126,28 @@ describe('Checkout Flow Tests', () => {
       cy.url().should('include', '/cart.html');
     });
   });
+
+  describe('Locked out user Checkout scenarios', () => {
+
+  it('should display error and prevent login', () => {
+    cy.login('locked');
+    cy.get('[data-test="error"]').should('contain.text', 'Epic sadface: Sorry, this user has been locked out.');
+  });
+
+  it.skip('should NOT be able to complete checkout (locked user)', () => {
+    // This user cannot log in, so checkout flow is not possible
+    cy.login('locked');
+  });
+
+  it.skip('should NOT show errors for missing fields (locked user)', () => {
+    // Known limitation: locked user cannot access checkout
+    cy.login('locked');
+  });
+
+  it.skip('should NOT be able to cancel checkout (locked user)', () => {
+    // Locked user cannot reach cart/checkout pages
+    cy.login('locked');
+  });
+
+});
 });
