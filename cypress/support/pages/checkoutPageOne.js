@@ -1,4 +1,4 @@
-class CheckoutPage {
+class CheckoutPageOne {
   // Selectors
   get firstNameInput() {
     return cy.get('[data-test="firstName"]');
@@ -56,4 +56,4 @@ class CheckoutPage {
   }
 }
 
-export const checkoutPage = new CheckoutPage();
+export const checkoutPageOne = new CheckoutPageOne();

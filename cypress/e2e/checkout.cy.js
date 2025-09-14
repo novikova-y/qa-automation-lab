@@ -1,6 +1,6 @@
 import { loginPage } from '../support/pages/loginPage';
 import { inventoryPage } from '../support/pages/inventoryPage';
-import { checkoutPage } from '../support/pages/checkoutPage';
+import { checkoutPage } from '../support/pages/checkoutPageOne';
 import users from '../fixtures/users.json';
 
 describe('Checkout Flow Tests', () => {
