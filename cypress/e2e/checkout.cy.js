@@ -1,6 +1,6 @@
 import { loginPage } from '../support/pages/loginPage';
 import { inventoryPage } from '../support/pages/inventoryPage';
-import { checkoutPage } from '../support/pages/checkoutPageOne';
+import { checkoutPageOne} from '../support/pages/checkoutPageOne';
 import users from '../fixtures/users.json';
 
 describe('Checkout Flow Tests', () => {
@@ -14,13 +14,13 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.summaryContainer.should('be.visible');
-      checkoutPage.clickFinish();
+      checkoutPageOne.summaryContainer.should('be.visible');
+      checkoutPageOne.clickFinish();
 
-      checkoutPage.successMessage.should('contain.text', 'Thank you for your order!');
+      checkoutPageOne.successMessage.should('contain.text', 'Thank you for your order!');
     });
 
     it('should show error when first name is missing', () => {
@@ -28,10 +28,10 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: First Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: First Name is required');
     });
 
     it('should show error when last name is missing', () => {
@@ -39,10 +39,10 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', '', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', '', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Last Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Last Name is required');
     });
 
     it('should show error when postal code is missing', () => {
@@ -50,10 +50,10 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Postal Code is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Postal Code is required');
     });
 
     it('should allow user to cancel checkout and return to cart', () => {
@@ -61,7 +61,7 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.clickCancel();
+      checkoutPageOne.clickCancel();
 
       cy.url().should('include', '/cart.html');
     });
@@ -73,14 +73,14 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
       
       // Known issue: problem_user has last name bug
-      checkoutPage.summaryContainer.should('be.visible');
-      checkoutPage.clickFinish();
+      checkoutPageOne.summaryContainer.should('be.visible');
+      checkoutPageOne.clickFinish();
 
-      checkoutPage.successMessage.should('contain.text', 'Thank you for your order!');
+      checkoutPageOne.successMessage.should('contain.text', 'Thank you for your order!');
     });
 
     it.skip('should show error when first name is missing (known issue)', () => {
@@ -88,10 +88,10 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
       // Known issue: problem_user has last name bug
-      checkoutPage.errorMessage.should('contain.text', 'Error: First Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: First Name is required');
     });
 
     it('should show error when last name is missing', () => {
@@ -99,10 +99,10 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', '', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', '', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Last Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Last Name is required');
     });
 
     it.skip('should show error when postal code is missing (known issue)', () => {
@@ -110,10 +110,10 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '');
+      checkoutPageOne.clickContinue();
       // Known issue: problem_user has last name bug
-      checkoutPage.errorMessage.should('contain.text', 'Error: Postal Code is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Postal Code is required');
     });
 
     it('should allow user to cancel checkout and return to cart', () => {
@@ -121,7 +121,7 @@ describe('Checkout Flow Tests', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.clickCancel();
+      checkoutPageOne.clickCancel();
 
       cy.url().should('include', '/cart.html');
     });
@@ -158,13 +158,13 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.summaryContainer.should('be.visible');
-      checkoutPage.clickFinish();
+      checkoutPageOne.summaryContainer.should('be.visible');
+      checkoutPageOne.clickFinish();
 
-      checkoutPage.successMessage.should('contain.text', 'Thank you for your order!');
+      checkoutPageOne.successMessage.should('contain.text', 'Thank you for your order!');
     });
 
     it('should show error when first name is missing', () => {
@@ -172,10 +172,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: First Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: First Name is required');
     });
 
     it('should show error when last name is missing', () => {
@@ -183,10 +183,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', '', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', '', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Last Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Last Name is required');
     });
 
     it('should show error when postal code is missing', () => {
@@ -194,10 +194,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Postal Code is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Postal Code is required');
     });
 
     it('should allow user to cancel checkout and return to cart', () => {
@@ -205,7 +205,7 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.clickCancel();
+      checkoutPageOne.clickCancel();
 
       cy.url().should('include', '/cart.html');
     });
@@ -217,13 +217,13 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.summaryContainer.should('be.visible');
-      checkoutPage.clickFinish();
+      checkoutPageOne.summaryContainer.should('be.visible');
+      checkoutPageOne.clickFinish();
 
-      checkoutPage.successMessage.should('contain.text', 'Thank you for your order!');
+      checkoutPageOne.successMessage.should('contain.text', 'Thank you for your order!');
     });
 
     it.skip('should show error when first name is missing (known issue)', () => {
@@ -231,10 +231,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: First Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: First Name is required');
     });
 
     it.skip('should show error when last name is missing (known issue)', () => {
@@ -242,10 +242,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', '', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', '', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Last Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Last Name is required');
     });
 
     it.skip('should show error when postal code is missing (known issue)', () => {
@@ -253,10 +253,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Postal Code is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Postal Code is required');
     });
 
     it('should allow user to cancel checkout and return to cart', () => {
@@ -264,7 +264,7 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.clickCancel();
+      checkoutPageOne.clickCancel();
 
       cy.url().should('include', '/cart.html');
     });
@@ -276,13 +276,13 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.summaryContainer.should('be.visible');
-      checkoutPage.clickFinish();
+      checkoutPageOne.summaryContainer.should('be.visible');
+      checkoutPageOne.clickFinish();
 
-      checkoutPage.successMessage.should('contain.text', 'Thank you for your order!');
+      checkoutPageOne.successMessage.should('contain.text', 'Thank you for your order!');
     });
 
     it('should show error when first name is missing', () => {
@@ -290,10 +290,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('', 'Doe', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('', 'Doe', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: First Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: First Name is required');
     });
 
     it('should show error when last name is missing', () => {
@@ -301,10 +301,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', '', '12345');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', '', '12345');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Last Name is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Last Name is required');
     });
 
     it('should show error when postal code is missing', () => {
@@ -312,10 +312,10 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.fillInformation('John', 'Doe', '');
-      checkoutPage.clickContinue();
+      checkoutPageOne.fillInformation('John', 'Doe', '');
+      checkoutPageOne.clickContinue();
 
-      checkoutPage.errorMessage.should('contain.text', 'Error: Postal Code is required');
+      checkoutPageOne.errorMessage.should('contain.text', 'Error: Postal Code is required');
     });
 
     it('should allow user to cancel checkout and return to cart', () => {
@@ -323,7 +323,7 @@ describe('Glitch user Checkout scenarios', () => {
       inventoryPage.addFirstItemToCart();
       cy.get('.shopping_cart_link').click();
       cy.get('[data-test="checkout"]').click();
-      checkoutPage.clickCancel();
+      checkoutPageOne.clickCancel();
 
       cy.url().should('include', '/cart.html');
     });
