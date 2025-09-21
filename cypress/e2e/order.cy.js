@@ -2,7 +2,6 @@ import { loginPage } from '../support/pages/loginPage';
 import { inventoryPage } from '../support/pages/inventoryPage';
 import { checkoutPageOne } from '../support/pages/checkoutPageOne';
 import { checkoutPageTwo } from '../support/pages/checkoutPageTwo';
-import users from '../fixtures/users.json';
 
 describe('Order Flow Tests', () => {
   beforeEach(() => {
